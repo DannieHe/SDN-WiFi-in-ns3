@@ -29,6 +29,7 @@
 #include <string>
 
 struct ofl_exp_wifi_msg_header;
+struct ofl_exp_adhoc_msg_header;
 
 namespace ns3 {
 
@@ -341,8 +342,14 @@ protected:
   virtual ofl_err HandleExperimenterMsg (
 	  struct ofl_exp_wifi_msg_header *msg, Ptr<const RemoteSwitch> swtch,
 	  uint32_t xid);
-  
+
+  virtual ofl_err HandleExperimenterMsg (
+	  struct ofl_exp_adhoc_msg_header *msg, Ptr<const RemoteSwitch> swtch,
+	  uint32_t xid);
+
   virtual ofl_err HandleFeaturesReplyWifi (Ptr<const RemoteSwitch> swtch);
+
+  virtual ofl_err HandleFeaturesReplyAdhoc (Ptr<const RemoteSwitch> swtch);
   //\}
 
 private:
