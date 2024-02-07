@@ -385,6 +385,7 @@ OFSwitch13Controller::HandleFeaturesReply (
   if (swtch->m_reserved)
   {
 	  HandleFeaturesReplyWifi (swtch);
+	  HandleFeaturesReplyAdhoc (swtch);
   }
   ofl_msg_free ((struct ofl_msg_header*)msg, &dp_exp);
 
@@ -516,7 +517,25 @@ OFSwitch13Controller::HandleExperimenterMsg (
 }
 
 ofl_err
+OFSwitch13Controller::HandleExperimenterMsg (
+	struct ofl_exp_adhoc_msg_header *msg, Ptr<const RemoteSwitch> swtch,
+	uint32_t xid)
+{
+	NS_LOG_FUNCTION (this << swtch << xid);
+
+	ofl_msg_free ((struct ofl_msg_header*)msg, &dp_exp);
+	return 0;
+}
+
+ofl_err
 OFSwitch13Controller::HandleFeaturesReplyWifi (Ptr<const RemoteSwitch> swtch)
+{
+	NS_LOG_FUNCTION (this << swtch);
+	return 0;
+}
+
+ofl_err
+OFSwitch13Controller::HandleFeaturesReplyAdhoc (Ptr<const RemoteSwitch> swtch)
 {
 	NS_LOG_FUNCTION (this << swtch);
 	return 0;
